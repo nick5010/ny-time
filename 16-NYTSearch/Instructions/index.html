@@ -16,20 +16,32 @@
     </div>
     </div>
     <section id="search parameter">
+
         <h3>Search Parameters</h3>
-        <h3>Search terms</h3>
-        <input type="Search terms" class="form-control" id="exampleSearchterms" placeholder="Search terms">
-        <h3>Number of records to receive</h3>
-        <input type="Number of records to retrieve" class="form-control" id="Number of records to receive" placeholder="Number of records to receive">
-
-        <h3>Start Year</h3>
-        <input type="Start year" class="form-control" id="Start year" placeholder="Start year">
-        <h3>End year</h3>
-        <input type="End year" class="form-control" id="End year" placeholder="End year">
+        <div class="terms">
+            <h3>Search terms</h3>
+            <input type="Search-terms" class="form-control" id="Search-terms" placeholder="Search-terms">
+        </div>
+        <div class="records">
+            <h3>Number of records to receive</h3>
+            <input type="Number-of-records-to-retrieve" class="form-control" id="Records-received" placeholder="Number-of-records-to-receive">
+        </div>
+        <div class="start">
+            <h3>Start Year</h3>
+            <input type="Start-year" class="form-control" id="Start-year" placeholder="Start-year">
+        </div>
+        <div class="end">
+            <h3>End year</h3>
+            <input type="End-year" class="form-control" id="End-year" placeholder="End-year">
+        </div>
     </section>
-    <button id=search>Search</button>
+    <div class="search">
+        <button id=search>Search</button>
+    </div>
 
-    <button id=clear>Clear results</button>
+    <div class="clear">
+        <button id=clear>Clear results</button>
+    </div>
     <div id="display">
         <h3>Top Articles</h3>
     </div>
@@ -52,6 +64,12 @@
 
             var art = result.response.docs;
             console.log(art);
+
+            for (i = 0; i < art.length; i++) {
+                var articleDiv = $('<div id="article-div">')
+                articleDiv.append('<p>' + art[i].headline.main + " " + art[i].original + "");
+                articleDiv.append()
+            }
 
             $('#search').click(function () {
 
