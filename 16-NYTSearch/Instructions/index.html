@@ -53,16 +53,21 @@
             var art = result.response.docs;
             console.log(art);
 
-            for (i = 0; i < art.length; i++) {
-                var articleDiv = $('<div id="article-div">')
-                articleDiv.append('<p>' + art[i].headline.main +" " + art[i].original + "" );
-                articleDiv.append()
-            }
-
             $('#search').click(function () {
 
+                for (i = 0; i < art.length; i++) {
+                    var articleDiv = $('<div id="article-div">')
+                    articleDiv.append('<h3>' + art[i].headline.main + ", " + art[i].byline.original +
+                        '<h3>');
+                    articleDiv.append('<p>' + art[i].source);
+                    articleDiv.append('<p>' + art[i].web_url);
+                    $('#display').append(articleDiv);
+                }
             })
-
+            
+            $('#clear').click(function() {
+                $('#display').empty()
+            })
 
         })
     </script>
