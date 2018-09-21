@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New York Times search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container"></div>
+    <div class="jumbotron">
+        <h1> New York Times search</h1>
+    </div>
+    </div>
+    <section id="search parameter">
+        <h3>Search Parameters</h3>
+        <h3>Search terms</h3>
+        <input type="Search terms" class="form-control" id="exampleSearchterms" placeholder="Search terms">
+        <h3>Number of records to receive</h3>
+        <input type="Number of records to retrieve" class="form-control" id="Number of records to receive" placeholder="Number of records to receive">
+
+        <h3>Start Year</h3>
+        <input type="Start year" class="form-control" id="Start year" placeholder="Start year">
+        <h3>End year</h3>
+        <input type="End year" class="form-control" id="End year" placeholder="End year">
+    </section>
+    <button id=search>Search</button>
+
+    <button id=clear>Clear results</button>
+    <div id="display">
+        <h3>Top Articles</h3>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var queue = "roosevelt";
+        // dates or later
+        var begin = "2001" + "0101";
+        //dates or sooner
+        var end = "2009" + "1231";
+        var queryURL =
+            "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=1816ca23408940b3b91cc3b5e765ca20&q=" +
+            queue + "&begin_date=" + begin + "&end_date=" + end;
+
+        $.ajax({
+            url: queryURL,
+            method: 'GET'
+        }).then(function (result) {
+
+            var art = result.response.docs;
+            console.log(art);
+
+            for (i = 0; i < art.length; i++) {
+                var articleDiv = $('<div id="article-div">')
+                articleDiv.append('<p>' + art[i].headline.main +" " + art[i].original + "" );
+                articleDiv.append()
+            }
+
+            $('#search').click(function () {
+
+            })
+
+
+        })
+    </script>
+</body>
+
+</html>
